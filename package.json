@@ -1,0 +1,19 @@
+{
+  "name": "estimationsapp",
+  "version": "1.0.0",
+  "description": "This app is to manage different projects each having tasks and people associated with it. It also give estimated end date with the amount of people associated with it.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shreeshaalek/estimationApp.git"
+  },
+  "author": "Shreesha alek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shreeshaalek/estimationApp/issues"
+  },
+  "homepage": "https://github.com/shreeshaalek/estimationApp#readme"
+}
