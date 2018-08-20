@@ -1,19 +1,25 @@
-import C from '../constants';
 import ProjListContainer from '../../components/projList'
-import { addProj } from '../actions';
+import { addProj, delProj } from '../actions';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
-const mapStateToProps = (state, props) =>
+const mapStateToProps = (state) =>
     ({
-        projLists: state.addProjToList
+        projLists: state.handleProjList
     })
 
 const mapDispatchToProps = dispatch =>
     ({
+        deleteProj(id) {
+            dispatch(
+                delProj(id)
+            );
+        },
         addNewProj(projObj) {
             dispatch(
-                addProj(C.ADD_PROJ, projObj)
+                addProj(projObj)
             );
         }
-    });
-export default connect (mapStateToProps, mapDispatchToProps)(ProjListContainer);
+    })
+
+export default withRouter(connect (mapStateToProps, mapDispatchToProps)(ProjListContainer));

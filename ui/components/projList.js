@@ -1,5 +1,17 @@
 import React from 'react';
 
+const ProjContent = ({id, title, endDate, deleteProj=f=>f}) => {
+    return (
+        <div className='proj-content'>
+            <div className='title'>{title}</div>
+            <div className='end-date'>{endDate}</div>
+            <div className='percent-completed'></div>
+            <button className='delete-proj' onClick={()=>{deleteProj(id)}}>delete</button>
+        </div>
+
+    )
+}
+
 class projList extends React.Component {
     constructor(props){
         super(props);
@@ -19,14 +31,15 @@ class projList extends React.Component {
 
     render(){
         const {title, endDate} = this.state;
-        const {projList} = this.props;
-        const projObj = {title, endDate};
-        console.log(this.props);
+        const {projLists} = this.props;
+        const id = Date.parse(new Date());
+        const projObj = {id, title, endDate};
+
         return(
         <section className='proj-list-container'>
-            {projList && projList.map((item,i)=>{
-                <projContent {...item}/>
-            })}
+            {( +projLists !== 0 && projLists.map((item,i)=>
+                <ProjContent key={i} {...item} deleteProj={this.props.deleteProj}/>
+            ))}
             <button className='add-button' onClick={this.addProj}>+</button>
             {this.state.showAddForm && 
             <div className='form'>
@@ -34,21 +47,11 @@ class projList extends React.Component {
                 <input type='text' onChange={(e)=>{this.setState({title: e.target.value})}}/>
                 <label>end date</label>
                 <input type='text' onChange={(e)=>{this.setState({endDate: e.target.value})}}/>
-                <button className='submit' onClick={()=>{this.props.addNewProj.bind(this,projObj)}}>submit</button>
+                <button className='submit' onClick={()=>{this.props.addNewProj(projObj)}}>submit</button>
             </div>}
         </section>
         );
     }
 }
 
-const projContent = (props) => {
-    return (
-        <div className='proj-content'>
-            <div className='title'>{props.title}</div>
-            <div className='end-date'>{props.endDate}</div>
-            <div className='percent-completed'></div>
-        </div>
-
-    )
-}
 export default projList;

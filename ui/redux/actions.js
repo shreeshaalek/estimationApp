@@ -1,9 +1,18 @@
-import C from './constants'
-export const addProj = ({title, endDate}) => {
+import C from './constants';
+
+export const addProj = ({id, title, endDate}) => {
+
     return ({
         type:C.ADD_PROJ,
         payload: {
-            title, endDate
+            id, title, endDate
         }
+    })
+}
+
+export const delProj = (id) => {
+    return ({
+        type:C.DEL_PROJ,
+        payload: id
     })
 }

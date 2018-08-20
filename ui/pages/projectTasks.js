@@ -1,7 +1,7 @@
 import React from 'react';
-import ProjList from '../components/projList'
+import ProjList from '../redux/containers/projList'
 
-const HelloMessage = () => {
+const ProJPage = () => {
       return (
         <div>
         <ProjList/>
@@ -9,4 +9,4 @@ const HelloMessage = () => {
       );
   }
 
-  export default HelloMessage;
+  export default ProJPage;
