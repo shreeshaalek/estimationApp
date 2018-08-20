@@ -1,3 +1,13 @@
+import reactDOM from "react-dom";
+import React from "react";
+import HelloMessage from './pages/projectTasks';
+import { Provider } from 'react-redux'
+import storeFactory from './redux/store'
 
-import ReactDOM from 'react-dom'
-ReactDOM.render(<h1>Hello, world!</h1>, domContainer);
+let domContainer = document.getElementById('root')
+const store = storeFactory({});
+
+reactDOM.hydrate(
+	<Provider store={store}>
+	   <HelloMessage/>
+	</Provider>, domContainer);
